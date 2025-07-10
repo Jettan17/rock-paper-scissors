@@ -67,6 +67,8 @@ function playRound(humanChoice, computerChoice) {
         console.log(`You win! ${humanChoice} beats ${computerChoice}`)
     } else if (winner == "computer") {
         console.log(`You lose! ${humanChoice} loses to ${computerChoice}`)
+    } else {
+        console.log(`You tied! ${humanChoice} ties with ${computerChoice}`)
     }
 
     return winner
@@ -77,7 +79,7 @@ function playGame() {
     let computerScore = 0
     
     for (let i = 0; i < 5; i++) {
-        console.log(`Round ${i}`) //Round no.
+        console.log(`Round ${i+1}`) //Round no.
 
         winner = playRound(getHumanChoice(), getComputerChoice()) //grab winner
 
