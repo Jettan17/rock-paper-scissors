@@ -21,6 +21,16 @@ function playRound(humanChoice, computerChoice) {
 
     winner = ""
 
+    const container = document.querySelector(".results");
+    
+    if (humanScore == 5 || computerScore == 5) {
+        //Reset game
+        humanScore = 0;
+        computerScore = 0;
+
+        container.innerHTML = '';
+    }
+
     switch (humanChoice) {
         case ("rock"):
             switch (computerChoice) {
@@ -63,8 +73,6 @@ function playRound(humanChoice, computerChoice) {
             break
     }
 
-    const container = document.querySelector(".results");
-
     if (winner == "human") {
         const result = document.createElement("p");
         result.textContent = `You win! ${humanChoice} beats ${computerChoice}`;
@@ -79,7 +87,35 @@ function playRound(humanChoice, computerChoice) {
         container.appendChild(result);
     }
 
-    return winner
+    //Display running score + winner
+    const score = document.createElement("p");
+    
+
+    switch (winner) {
+        case "human":
+            humanScore++;
+            break;
+        case "computer":
+            computerScore++;
+            break;
+    }
+
+    if (humanScore == 5 || computerScore == 5) {
+        score.textContent = `Final Scores: Human: ${humanScore} Computer: ${computerScore}`;
+        container.appendChild(score);
+
+        //Winner
+        const winner = document.createElement("p");
+        winner.textContent = `Winner: ${humanScore > computerScore ? "Human" : "Computer"} wins!`;
+        container.appendChild(winner);
+    } else {
+        score.textContent = `Scores: Human: ${humanScore} Computer: ${computerScore}`;
+        container.appendChild(score);
+    }
+    
+    
+
+    return
 }
 
 // function playGame() {
@@ -103,6 +139,9 @@ function playRound(humanChoice, computerChoice) {
 // }
 
 // playGame()
+
+let humanScore = 0;
+let computerScore = 0;
 
 const buttons = document.querySelectorAll("button");
 
