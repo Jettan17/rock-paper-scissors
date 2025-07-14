@@ -63,12 +63,20 @@ function playRound(humanChoice, computerChoice) {
             break
     }
 
+    const container = document.querySelector(".results");
+
     if (winner == "human") {
-        console.log(`You win! ${humanChoice} beats ${computerChoice}`)
+        const result = document.createElement("p");
+        result.textContent = `You win! ${humanChoice} beats ${computerChoice}`;
+        container.appendChild(result);
     } else if (winner == "computer") {
-        console.log(`You lose! ${humanChoice} loses to ${computerChoice}`)
+        const result = document.createElement("p");
+        result.textContent = `You lose! ${humanChoice} loses to ${computerChoice}`;
+        container.appendChild(result);
     } else {
-        console.log(`You tied! ${humanChoice} ties with ${computerChoice}`)
+        const result = document.createElement("p");
+        result.textContent = `You tied! ${humanChoice} ties with ${computerChoice}`;
+        container.appendChild(result);
     }
 
     return winner
