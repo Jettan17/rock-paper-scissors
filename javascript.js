@@ -74,24 +74,30 @@ function playRound(humanChoice, computerChoice) {
     return winner
 }
 
-function playGame() {
-    let humanScore = 0
-    let computerScore = 0
+// function playGame() {
+//     let humanScore = 0
+//     let computerScore = 0
     
-    for (let i = 0; i < 5; i++) {
-        console.log(`Round ${i+1}`) //Round no.
+//     for (let i = 0; i < 5; i++) {
+//         console.log(`Round ${i+1}`) //Round no.
 
-        winner = playRound(getHumanChoice(), getComputerChoice()) //grab winner
+//         winner = playRound(getHumanChoice(), getComputerChoice()) //grab winner
 
-        if (winner == "human") {
-            humanScore++
-        } else if (winner == "computer") {
-            computerScore++
-        }
-    }
+//         if (winner == "human") {
+//             humanScore++
+//         } else if (winner == "computer") {
+//             computerScore++
+//         }
+//     }
 
-    console.log(`Final Scores: Human: ${humanScore} Computer: ${computerScore}`)
-    console.log(`${humanScore > computerScore ? "Human" : "Computer"} wins!`)
-}
+//     console.log(`Final Scores: Human: ${humanScore} Computer: ${computerScore}`)
+//     console.log(`${humanScore > computerScore ? "Human" : "Computer"} wins!`)
+// }
 
-playGame()
+// playGame()
+
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => 
+    button.addEventListener("click", () => playRound(button.textContent, getComputerChoice())));
+
